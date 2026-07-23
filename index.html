@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Gaspar Portfolio</title>
+  <meta name="description" content="AJ Gaspar — computer science student and full-stack web developer. I build real, working web apps end to end." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#top" class="nav-brand">Andrew&nbsp;Gaspar</a>
+    <nav class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://github.com/Agaspar1321" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <p class="hero-eyebrow">Computer Science Student</p>
+      <h1>I build web apps<br><span>from the API to the UI.</span></h1>
+      <p class="hero-lede">
+        I learn by shipping. Over the past year I've taken three web apps from idea to
+        deployed product — teaching myself full-stack development one project at a time.
+        Every line in these is mine.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View my work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>Four live apps, each built and deployed end to end — newest first.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- ShouldISlab -->
+        <article class="project-card">
+          <div class="project-thumb thumb-teal">
+            <img src="images/shouldislab.png" alt="ShouldISlab screenshot">
+          </div>
+          <div class="project-body">
+            <h3>ShouldISlab</h3>
+            <p class="project-desc">
+              A card-grading ROI tool. Search any trading card and it pulls live sold prices,
+              then uses a probability-weighted expected-value model to tell you whether grading
+              it is actually worth the money — factoring in fees, grading cost, and your odds at
+              each grade.
+            </p>
+            <ul class="tech-tags">
+              <li>Node.js</li><li>Express</li><li>REST API</li><li>Vanilla JS</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-small btn-primary" href="https://www.shouldislab.com" target="_blank" rel="noopener">Live ↗</a>
+              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/ShouldISlab" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Check Splitter -->
+        <article class="project-card">
+          <div class="project-thumb thumb-amber">
+            <img src="images/check-splitter.png" alt="Check Splitter screenshot">
+          </div>
+          <div class="project-body">
+            <h3>Check Splitter</h3>
+            <p class="project-desc">
+              Splits a restaurant bill fairly — each person pays for what they ordered plus a
+              proportional share of tax and tip, with penny-perfect rounding so the totals always
+              add up exactly.
+            </p>
+            <ul class="tech-tags">
+              <li>Vanilla JS</li><li>HTML</li><li>CSS</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-small btn-primary" href="https://checksplitter1.netlify.app" target="_blank" rel="noopener">Live ↗</a>
+              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/check-splitter" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ExplainMyCode -->
+        <article class="project-card">
+          <div class="project-thumb thumb-indigo">
+            <img src="images/explainmycode.png" alt="ExplainMyCode screenshot">
+          </div>
+          <div class="project-body">
+            <h3>ExplainMyCode</h3>
+            <p class="project-desc">
+              <!-- TODO(AJ): confirm this description -->
+              A tool that takes a block of code and explains it in plain English — built to help
+              people understand unfamiliar code fast.
+            </p>
+            <ul class="tech-tags">
+              <li>Vanilla Js</li><li>HTML</li><li>CSS</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-small btn-primary" href="https://explainmycode2.netlify.app" target="_blank" rel="noopener">Live ↗</a>
+              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/explain-my-code" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- To-Do List -->
+        <article class="project-card">
+          <div class="project-thumb thumb-rose">
+            <img src="images/todo-list.png" alt="To-Do List screenshot">
+          </div>
+          <div class="project-body">
+            <h3>To-Do List</h3>
+            <p class="project-desc">
+              <!-- TODO(AJ): confirm this description -->
+              A clean task manager — add tasks, check them off, and keep your list organized.
+              One of my first builds, where I nailed down the fundamentals.
+            </p>
+            <ul class="tech-tags">
+              <li>Vanilla JS</li><li>HTML</li><li>CSS</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-small btn-primary" href="https://agaspar1321.github.io/todo-list/" target="_blank" rel="noopener">Live ↗</a>
+              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/todo-list" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section section-about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about-body">
+        <p>
+          I'm AJ — a computer science student at UW who'd rather build than just study. I taught myself
+          full-stack development by shipping real products: taking each one from an idea to a
+          deployed, working app that people can actually use.
+        </p>
+        <p>
+          I'm strongest in JavaScript and comfortable across the stack — Node and Express on the
+          back end, REST APIs, and hand-written front ends. I care about understanding every line I
+          write, not just getting it working. <!-- TODO(AJ): tweak in your own voice -->
+        </p>
+        <p>
+          I'm looking for <strong>internship or junior developer roles</strong> where I can keep
+          building and learning fast. <!-- TODO(AJ): confirm what you're after -->
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section section-contact">
+      <div class="section-head">
+        <h2>Get in touch</h2>
+        <p>The fastest way to reach me:</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:ajgaspar13@gmail.com">✉ ajgaspar13@gmail.com</a>
+        <a class="contact-link" href="https://github.com/Agaspar1321" target="_blank" rel="noopener">⌥ github.com/Agaspar1321</a>
+        <!-- TODO(AJ): add your real LinkedIn URL -->
+        <a class="contact-link" href="#" data-todo="linkedin">in LinkedIn</a>
+        <!-- TODO(AJ): link your resume (PDF) -->
+        <a class="contact-link" href="#" data-todo="resume">▤ Résumé</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 AJ Gaspar</span>
+    <span>Built from scratch with HTML, CSS &amp; JavaScript.</span>
+  </footer>
+
+</body>
+</html>
