@@ -3,188 +3,315 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrew Gaspar Portfolio</title>
-  <meta name="description" content="AJ Gaspar — computer science student and full-stack web developer. I build real, working web apps end to end." />
+  <title>Andrew Gaspar</title>
+  <meta name="description" content="Andrew Gaspar. Computer science student at UW Tacoma. Four live software projects, one built for a paying client." />
+  <meta name="color-scheme" content="dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Archivo:wght@400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header class="nav">
-    <a href="#top" class="nav-brand">Andrew&nbsp;Gaspar</a>
-    <nav class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 368 276" fill="none" aria-hidden="true" focusable="false">
+        <rect x="4" y="4" width="359" height="267" rx="22" stroke="currentColor" stroke-width="8" />
+        <path d="M4 79.5H363" stroke="currentColor" stroke-width="8" />
+        <circle cx="45.5" cy="41.5" r="9.5" fill="currentColor" />
+        <circle cx="81.5" cy="41.5" r="9.5" fill="currentColor" />
+        <circle cx="117.5" cy="41.5" r="9.5" fill="#ff5c1a" />
+        <g stroke="#ff5c1a" stroke-width="10" stroke-linecap="square">
+          <path d="M142 162 120 180l22 18" />
+          <path d="M196.5 147.5 170.5 212.5" />
+          <path d="M225 162l22 18-22 18" />
+        </g>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Andrew Gaspar</span>
+      <span class="brand-role">CS Student</span>
+      </span>
+    </a>
+    <nav class="pill" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <a class="nav-cta" href="https://github.com/Agaspar1321" target="_blank" rel="noopener">GitHub ↗</a>
     </nav>
+    <div class="toplinks">
+      <a href="https://www.linkedin.com/in/andrew-gaspar-7aaa92343" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="btn" href="Andrew_Gaspar_Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
+    </div>
   </header>
 
   <main id="top">
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
-      <p class="hero-eyebrow">Computer Science Student</p>
-      <h1>I build web apps<br><span>from the API to the UI.</span></h1>
-      <p class="hero-lede">
-        I learn by shipping. Over the past year I've taken three web apps from idea to
-        deployed product — teaching myself full-stack development one project at a time.
-        Every line in these is mine.
+      <div class="hero-copy">
+        <p class="eyebrow">Tacoma, WA <span class="eyebrow-extra">· Open to internships</span></p>
+        <h1>CS student.<br /> <span class="accent">I build software.</span></h1>
+        <div class="hero-meta">
+          <p>
+            I study computer science at UW Tacoma and build software on the side: a production site
+            for a paying client, a card-grading calculator built around a rate-limited API, and two
+            smaller tools. I work mostly in JavaScript and Node, and I also write Java and Python.
+          </p>
+          <p>All four projects below are live.</p>
+        </div>
+      </div>
+
+      <figure class="editor">
+        <div class="editor-bar" aria-hidden="true">
+          <span class="editor-dots"><i></i><i></i><i></i></span>
+          <span class="editor-tab">andrew.js</span>
+        </div>
+<pre class="editor-code"><code><span class="k">const</span> <span class="v">andrew</span> = {
+  <span class="p">school</span>: <span class="s">'UW Tacoma'</span>,
+  <span class="p">major</span>: <span class="s">'Computer Science &amp; Systems'</span>,
+  <span class="p">graduating</span>: <span class="n">2028</span>,
+  <span class="p">stack</span>: [<span class="s">'JavaScript'</span>, <span class="s">'Node'</span>, <span class="s">'Express'</span>,
+          <span class="s">'Java'</span>, <span class="s">'Python'</span>, <span class="s">'SQL'</span>],
+  <span class="p">shipped</span>: <span class="n">4</span>,  <span class="c">// all live</span>
+  <span class="p">clients</span>: <span class="n">1</span>,  <span class="c">// paying, on retainer</span>
+  <span class="p">openTo</span>: [<span class="s">'internships'</span>, <span class="s">'entry-level'</span>],
+};<span class="cursor" aria-hidden="true"></span></code></pre>
+      </figure>
+    </section>
+
+    <section id="work" class="section">
+      <h2 class="eyebrow">Selected work</h2>
+
+      <article class="card-frame" style="--hue: 184">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-head">
+              <h3>
+                <a href="https://brightdetailswa.com" target="_blank" rel="noopener">
+                  Bright Detailing <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </h3>
+              <p class="tagline"><strong>Client work</strong> — The business's first website, built and run on retainer.</p>
+            </div>
+            <div class="card-body">
+              <p>
+                Production site for a mobile auto detailer in Pierce County. Before this the business
+                only had a Facebook page. The site is a data-driven Eleventy build, so the phone
+                number, hours, and prices each live in one place instead of being copied onto every
+                page.
+              </p>
+              <p>
+                I also built a CMS admin panel so the owner can change her hours, pricing, and photos
+                from her phone without calling me. Images go out in five widths as JPEG and WebP with
+                intrinsic dimensions, so nothing shifts on load.
+              </p>
+              <ul class="tags">
+                <li>Eleventy</li><li>Nunjucks</li><li>Netlify</li><li>CMS admin panel</li>
+              </ul>
+              <p class="links">
+                <a href="https://brightdetailswa.com" target="_blank" rel="noopener">brightdetailswa.com ↗</a>
+              </p>
+            </div>
+          </div>
+          <div class="devices">
+            <a class="shot" href="https://brightdetailswa.com" target="_blank" rel="noopener" tabindex="-1">
+              <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">brightdetailswa.com</span><span class="live">Live</span></div>
+              <img src="images/bright-detailing.webp" width="1600" height="1000" alt="The Bright Detailing home page with before and after interior photos" loading="lazy" />
+            </a>
+            <a class="phone" href="https://brightdetailswa.com" target="_blank" rel="noopener" tabindex="-1">
+              <span class="phone-bar" aria-hidden="true"><i></i></span>
+              <img src="images/bright-detailing-phone.webp" width="520" height="1126" alt="Bright Detailing on a phone" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-frame" style="--hue: 222">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-head">
+              <h3>
+                <a href="https://www.shouldislab.com" target="_blank" rel="noopener">
+                  ShouldISlab <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </h3>
+              <p class="tagline"><strong>Side project</strong> — Is grading this card worth the money?</p>
+            </div>
+            <div class="card-body">
+              <p>
+                Search a trading card and find out whether paying to have it professionally graded is
+                worth the money. It pulls live sold prices, then runs a probability-weighted expected
+                value: your odds at each grade against grading fees, seller fees, and what the raw card
+                goes for today.
+              </p>
+              <p>
+                One verdict can cost 7 calls to a price API that allows about 10 every 35 seconds. I
+                measured that limit and built an in-memory TTL cache around it; without the cache, the
+                second search gets rate-limited. If a 429 still comes back, the server fails fast and
+                shows a retry countdown. Grade odds come from population reports. Wilson score intervals
+                keep a card with twelve graded copies from being trusted like one with twelve thousand.
+              </p>
+              <ul class="tags">
+                <li>Node.js</li><li>Express</li><li>REST API</li><li>Vanilla JS</li><li>Render</li><li>Cloudflare</li>
+              </ul>
+              <p class="links">
+                <a href="https://www.shouldislab.com" target="_blank" rel="noopener">shouldislab.com ↗</a>
+                <a href="https://github.com/Agaspar1321/ShouldISlab" target="_blank" rel="noopener">Source ↗</a>
+              </p>
+            </div>
+          </div>
+          <div class="devices">
+            <a class="shot" href="https://www.shouldislab.com" target="_blank" rel="noopener" tabindex="-1">
+              <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">shouldislab.com</span><span class="live">Live</span></div>
+              <img src="images/shouldislab.webp" width="1600" height="1000" alt="The ShouldISlab card search and grading verdict screen" loading="lazy" />
+            </a>
+            <a class="phone" href="https://www.shouldislab.com" target="_blank" rel="noopener" tabindex="-1">
+              <span class="phone-bar" aria-hidden="true"><i></i></span>
+              <img src="images/shouldislab-phone.webp" width="520" height="1126" alt="ShouldISlab on a phone" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-frame" style="--hue: 32">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-head">
+              <h3>
+                <a href="https://checksplitter1.netlify.app" target="_blank" rel="noopener">
+                  Check Splitter <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </h3>
+              <p class="tagline"><strong>Side project</strong> — Everyone pays for what they ordered.</p>
+            </div>
+            <div class="card-body">
+              <p>
+                Splits a restaurant bill so everyone pays for what they actually ordered, plus their
+                proportional share of tax and tip. It rounds to the penny, so the total comes out exact
+                instead of eleven cents short.
+              </p>
+              <ul class="tags">
+                <li>Vanilla JS</li><li>HTML</li><li>CSS</li>
+              </ul>
+              <p class="links">
+                <a href="https://checksplitter1.netlify.app" target="_blank" rel="noopener">Try it ↗</a>
+                <a href="https://github.com/Agaspar1321/check-splitter" target="_blank" rel="noopener">Source ↗</a>
+              </p>
+            </div>
+          </div>
+          <div class="devices">
+            <a class="shot" href="https://checksplitter1.netlify.app" target="_blank" rel="noopener" tabindex="-1">
+              <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">checksplitter1.netlify.app</span><span class="live">Live</span></div>
+              <img src="images/check-splitter.webp" width="1600" height="1000" alt="The Check Splitter item and per-person totals screen" loading="lazy" />
+            </a>
+            <a class="phone" href="https://checksplitter1.netlify.app" target="_blank" rel="noopener" tabindex="-1">
+              <span class="phone-bar" aria-hidden="true"><i></i></span>
+              <img src="images/check-splitter-phone.webp" width="520" height="1126" alt="Check Splitter on a phone" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-frame" style="--hue: 268">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-head">
+              <h3>
+                <a href="https://explainmycode2.netlify.app" target="_blank" rel="noopener">
+                  ExplainMyCode <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </h3>
+              <p class="tagline"><strong>Side project</strong> — Plain English for someone else's code.</p>
+            </div>
+            <div class="card-body">
+              <p>
+                Paste in a block of code and get back a plain English explanation of what it does. I
+                built it for the stretch where I could read syntax fine but still lost the thread on
+                what someone else's function was for.
+              </p>
+              <p>
+                An Express server sits between the page and the Anthropic API, so the key never reaches
+                the browser. The API layer validates input, caps payload size, and rate-limits by IP.
+              </p>
+              <ul class="tags">
+                <li>Node.js</li><li>Express</li><li>Anthropic API</li>
+              </ul>
+              <p class="links">
+                <a href="https://explainmycode2.netlify.app" target="_blank" rel="noopener">Try it ↗</a>
+                <a href="https://github.com/Agaspar1321/explain-my-code" target="_blank" rel="noopener">Source ↗</a>
+              </p>
+            </div>
+          </div>
+          <div class="devices devices--desktop-only">
+            <a class="shot" href="https://explainmycode2.netlify.app" target="_blank" rel="noopener" tabindex="-1">
+              <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">explainmycode2.netlify.app</span><span class="live">Live</span></div>
+              <img src="images/explainmycode.webp" width="1600" height="1000" alt="The ExplainMyCode input and explanation panes" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="callout">
+        <p>
+          Smaller experiments and the full commit history for my own projects are on GitHub. I
+          don't delete the ugly early versions.
+        </p>
+        <a href="https://github.com/Agaspar1321?tab=repositories" target="_blank" rel="noopener">All repositories ↗</a>
+      </aside>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="eyebrow">Skills</h2>
+      <dl class="skills">
+        <div>
+          <dt>Languages</dt>
+          <dd>JavaScript, Java, Python, HTML/CSS, SQL</dd>
+        </div>
+        <div>
+          <dt>Backend</dt>
+          <dd>Node.js, Express, REST API design, third-party API integration, caching, rate limiting</dd>
+        </div>
+        <div>
+          <dt>Frontend</dt>
+          <dd>Vanilla JS, responsive design, accessibility (ARIA), progressive enhancement</dd>
+        </div>
+        <div>
+          <dt>Tools</dt>
+          <dd>Git/GitHub, Netlify, Render, Cloudflare, Eleventy/Nunjucks, npm</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2 class="eyebrow">Contact</h2>
+      <p class="contact-lead">
+        I'm looking for an internship or entry-level role in software engineering, backend
+        development, IT, or data.
+        Email is the fastest way to reach me and I answer everything.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View my work</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
-      </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="section">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <p>Four live apps, each built and deployed end to end — newest first.</p>
-      </div>
-
-      <div class="project-grid">
-
-        <!-- ShouldISlab -->
-        <article class="project-card">
-          <div class="project-thumb thumb-teal">
-            <img src="images/shouldislab.png" alt="ShouldISlab screenshot">
-          </div>
-          <div class="project-body">
-            <h3>ShouldISlab</h3>
-            <p class="project-desc">
-              A card-grading ROI tool. Search any trading card and it pulls live sold prices,
-              then uses a probability-weighted expected-value model to tell you whether grading
-              it is actually worth the money — factoring in fees, grading cost, and your odds at
-              each grade.
-            </p>
-            <ul class="tech-tags">
-              <li>Node.js</li><li>Express</li><li>REST API</li><li>Vanilla JS</li>
-            </ul>
-            <div class="project-links">
-              <a class="btn btn-small btn-primary" href="https://www.shouldislab.com" target="_blank" rel="noopener">Live ↗</a>
-              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/ShouldISlab" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Check Splitter -->
-        <article class="project-card">
-          <div class="project-thumb thumb-amber">
-            <img src="images/check-splitter.png" alt="Check Splitter screenshot">
-          </div>
-          <div class="project-body">
-            <h3>Check Splitter</h3>
-            <p class="project-desc">
-              Splits a restaurant bill fairly — each person pays for what they ordered plus a
-              proportional share of tax and tip, with penny-perfect rounding so the totals always
-              add up exactly.
-            </p>
-            <ul class="tech-tags">
-              <li>Vanilla JS</li><li>HTML</li><li>CSS</li>
-            </ul>
-            <div class="project-links">
-              <a class="btn btn-small btn-primary" href="https://checksplitter1.netlify.app" target="_blank" rel="noopener">Live ↗</a>
-              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/check-splitter" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- ExplainMyCode -->
-        <article class="project-card">
-          <div class="project-thumb thumb-indigo">
-            <img src="images/explainmycode.png" alt="ExplainMyCode screenshot">
-          </div>
-          <div class="project-body">
-            <h3>ExplainMyCode</h3>
-            <p class="project-desc">
-              <!-- TODO(AJ): confirm this description -->
-              A tool that takes a block of code and explains it in plain English — built to help
-              people understand unfamiliar code fast.
-            </p>
-            <ul class="tech-tags">
-              <li>Vanilla Js</li><li>HTML</li><li>CSS</li>
-            </ul>
-            <div class="project-links">
-              <a class="btn btn-small btn-primary" href="https://explainmycode2.netlify.app" target="_blank" rel="noopener">Live ↗</a>
-              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/explain-my-code" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- To-Do List -->
-        <article class="project-card">
-          <div class="project-thumb thumb-rose">
-            <img src="images/todo-list.png" alt="To-Do List screenshot">
-          </div>
-          <div class="project-body">
-            <h3>To-Do List</h3>
-            <p class="project-desc">
-              <!-- TODO(AJ): confirm this description -->
-              A clean task manager — add tasks, check them off, and keep your list organized.
-              One of my first builds, where I nailed down the fundamentals.
-            </p>
-            <ul class="tech-tags">
-              <li>Vanilla JS</li><li>HTML</li><li>CSS</li>
-            </ul>
-            <div class="project-links">
-              <a class="btn btn-small btn-primary" href="https://agaspar1321.github.io/todo-list/" target="_blank" rel="noopener">Live ↗</a>
-              <a class="btn btn-small btn-ghost" href="https://github.com/Agaspar1321/todo-list" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="section section-about">
-      <div class="section-head">
-        <h2>About</h2>
-      </div>
-      <div class="about-body">
-        <p>
-          I'm AJ — a computer science student at UW who'd rather build than just study. I taught myself
-          full-stack development by shipping real products: taking each one from an idea to a
-          deployed, working app that people can actually use.
-        </p>
-        <p>
-          I'm strongest in JavaScript and comfortable across the stack — Node and Express on the
-          back end, REST APIs, and hand-written front ends. I care about understanding every line I
-          write, not just getting it working. <!-- TODO(AJ): tweak in your own voice -->
-        </p>
-        <p>
-          I'm looking for <strong>internship or junior developer roles</strong> where I can keep
-          building and learning fast. <!-- TODO(AJ): confirm what you're after -->
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="section section-contact">
-      <div class="section-head">
-        <h2>Get in touch</h2>
-        <p>The fastest way to reach me:</p>
-      </div>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:ajgaspar13@gmail.com">✉ ajgaspar13@gmail.com</a>
-        <a class="contact-link" href="https://github.com/Agaspar1321" target="_blank" rel="noopener">⌥ github.com/Agaspar1321</a>
-        <!-- TODO(AJ): add your real LinkedIn URL -->
-        <a class="contact-link" href="#" data-todo="linkedin">in LinkedIn</a>
-        <!-- TODO(AJ): link your resume (PDF) -->
-        <a class="contact-link" href="#" data-todo="resume">▤ Résumé</a>
-      </div>
+      <a class="contact-email" href="mailto:ajgaspar13@gmail.com">ajgaspar13@gmail.com</a>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <span>© 2026 AJ Gaspar</span>
-    <span>Built from scratch with HTML, CSS &amp; JavaScript.</span>
+  <footer class="footer">
+    <div class="footer-cols">
+      <div>
+        <p class="footer-label">Main</p>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <p class="footer-label">Elsewhere</p>
+        <a href="https://github.com/Agaspar1321" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/andrew-gaspar-7aaa92343" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="Andrew_Gaspar_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>Andrew Gaspar, 2026</span>
+    </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
