@@ -396,7 +396,6 @@ body { position: relative; isolation: isolate; }
   margin: clamp(2rem, 4vw, 3rem) auto 0;
   padding-right: 13%;
 }
-.devices--desktop-only { padding-right: 0; max-width: 54rem; }
 
 .shot {
   display: block;
