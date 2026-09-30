@@ -1,14 +1,5 @@
-// Turns the stacked project cards in #work into a coverflow: every project's
-// desktop + phone shot in a fanned stack, one in front and the rest dimmed
-// behind it, with arrows and dots underneath and the front project's write-up
-// below that. Built here rather than in the markup so that with JS off the
-// cards just stack down the page with their screenshots and nothing is hidden.
-//
-// Same mechanics as the Gaspar Web Co client-work carousel: every slide sits
-// in the same spot and is pushed out by a transform that depends only on how
-// many steps it is from the front. Translation is in percent of the slide's own
-// width, so the arrangement scales with the page and there is nothing to
-// re-tune per breakpoint. It never auto-advances.
+// Project carousel. Moves each card's screenshots into a fanned stack with
+// prev/next controls. Without JS the cards just stack normally.
 
 (function () {
   var work = document.getElementById('work');
@@ -34,7 +25,7 @@
 
   work.classList.add('is-carousel');
 
-  // ---- Stage: move each card's .devices into its own slide ----
+  // stage
   var stage = document.createElement('div');
   stage.className = 'cf-stage';
   stage.setAttribute('role', 'group');
@@ -58,15 +49,14 @@
     return slide;
   });
 
-  // An invisible copy of the tallest slide stays in the flow so the stage has
-  // a height; every real slide is absolutely positioned and adds none.
+  // hidden copy of a slide gives the stage its height (slides are absolute)
   var sizer = document.createElement('div');
   sizer.className = 'cf-sizer';
   sizer.setAttribute('aria-hidden', 'true');
   sizer.appendChild(slides[0].firstChild.cloneNode(true));
   stage.insertBefore(sizer, stage.firstChild);
 
-  // ---- Caption + controls ----
+  // caption + controls
   var caption = document.createElement('p');
   caption.className = 'cf-caption';
   caption.setAttribute('aria-live', 'polite');
@@ -106,7 +96,7 @@
   var label = work.querySelector('.eyebrow');
   label.after(stage, caption, controls);
 
-  // ---- State ----
+  // state
   var active = 0;
   var dragged = false;
 
@@ -130,8 +120,7 @@
       slide.style.filter = 'brightness(' + step.brightness + ')';
       slide.style.zIndex = step.z;
       slide.classList.toggle('is-front', d === 0);
-      // Only the front slide's links work; a side slide is a big "bring me
-      // forward" target, handled by the click listener above.
+      // only the front slide is clickable through to the site
       slide.firstChild.inert = d !== 0;
       slide.setAttribute('aria-hidden', d === 0 ? 'false' : 'true');
     });
@@ -151,14 +140,13 @@
 
   function go(delta) { show(active + delta); }
 
-  // Arrow keys when the stage has focus.
+  // arrow keys
   stage.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
   });
 
-  // Swipe / drag: 40px either way turns the stack.
-  // The click that ends a drag is swallowed so it can't also pick a slide.
+  // swipe support; ignore the click that fires at the end of a drag
   var startX = null;
   stage.addEventListener('pointerdown', function (e) { startX = e.clientX; dragged = false; });
   stage.addEventListener('pointerup', function (e) {
