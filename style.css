@@ -238,6 +238,20 @@ body { position: relative; isolation: isolate; }
   color: var(--text);
   font-size: 1.05rem;
 }
+.coursework {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.coursework span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
 /* top edge highlight */
 .card::before {
