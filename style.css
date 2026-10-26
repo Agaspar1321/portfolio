@@ -580,10 +580,114 @@ body { position: relative; isolation: isolate; }
   color: var(--muted);
 }
 
+/* ---------- Case study page ---------- */
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--gold);
+  transition: color 0.2s;
+}
+.back:hover { color: var(--accent); }
+
+.study-lead { max-width: 40rem; margin-top: 1.5rem; color: var(--text); font-size: 1.15rem; }
+
+.study-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.study-facts dt {
+  margin-bottom: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.study-facts dd { color: var(--text); font-size: 0.95rem; }
+.study-facts dd a { margin-right: 0.75rem; color: var(--strong); border-bottom: 1px solid var(--gold); }
+.study-facts dd a:hover { color: var(--accent); }
+
+.prose > p { max-width: 42rem; color: var(--text); font-size: 1.05rem; }
+.prose > p + p, .prose > p + .table-wrap, .prose > .table-wrap + p,
+.prose > .diagram + p, .prose > p + .diagram { margin-top: 1rem; }
+
+.diagram {
+  margin-top: 1.75rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow-x: auto;
+}
+/* scrolls sideways on phones instead of shrinking the labels */
+.diagram svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.d-box { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1.5; }
+.d-main { stroke: var(--gold); }
+.d-inner { fill: var(--surface); stroke: var(--line); }
+.d-title { fill: var(--strong); font-family: var(--display); font-size: 19px; font-weight: 700; font-style: italic; text-transform: uppercase; letter-spacing: 0.04em; }
+.d-sub { fill: var(--text); font-family: var(--sans); font-size: 13px; }
+.d-label { fill: var(--accent); font-family: var(--mono); font-size: 11px; }
+.d-line { stroke: var(--muted); stroke-width: 1.5; }
+.d-head { fill: var(--muted); }
+
+.decisions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.decisions article {
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.decisions h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.decisions p { color: var(--text); font-size: 0.975rem; }
+
+.table-wrap { overflow-x: auto; max-width: 42rem; }
+.study table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.study caption {
+  padding-bottom: 0.6rem;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.study th, .study td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); text-align: left; }
+.study thead th { color: var(--muted); font-weight: 600; font-size: 0.85rem; }
+.study tbody th { color: var(--text); font-weight: 500; }
+.study td { font-family: var(--mono); color: var(--strong); }
+.study td.bad { color: #f19a9a; }
+.study td.good { color: #9bd8a6; }
+
+.takeaways { display: grid; gap: 0.9rem; max-width: 42rem; padding-left: 1.2rem; color: var(--text); font-size: 1.05rem; }
+.takeaways strong { color: var(--strong); }
+.study-next { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+.study-next .back { margin-bottom: 0; }
+
 /* ---------- Narrow ---------- */
 @media (max-width: 52rem) {
   .hero h1 { font-size: clamp(3rem, 11vw, 5rem); }
   .card-top { grid-template-columns: 1fr; gap: 1.25rem; }
+  .study-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .decisions { grid-template-columns: 1fr; }
   .toplinks { display: none; }
   .topbar { grid-template-columns: auto 1fr; padding: 0.9rem 1rem 2rem; }
   .pill { justify-self: end; }
