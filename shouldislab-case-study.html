@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShouldISlab case study · Andrew Gaspar</title>
+  <meta name="description" content="How I built ShouldISlab: an expected-value grading calculator around a rate-limited price API, and why I replaced its data provider halfway through." />
+  <meta name="color-scheme" content="dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-text">
+        <span class="brand-name">Andrew Gaspar</span>
+      <span class="brand-role">CS Student</span>
+      </span>
+    </a>
+    <nav class="pill" aria-label="Sections">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="toplinks">
+      <a href="https://www.linkedin.com/in/andrew-gaspar-7aaa92343" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="btn" href="Andrew_Gaspar_Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top" class="study">
+
+    <section class="hero">
+      <a class="back" href="index.html#work">← All projects</a>
+      <p class="eyebrow">Case study</p>
+      <h1>ShouldISlab</h1>
+      <p class="study-lead">
+        A calculator that tells you whether paying to grade a trading card is worth it. Halfway
+        through, I found out my data provider was wrong about a quarter of the time, so I
+        replaced it.
+      </p>
+      <dl class="study-facts">
+        <div><dt>Role</dt><dd>Solo: design, backend, frontend, deploy</dd></div>
+        <div><dt>Timeline</dt><dd>July–August 2026</dd></div>
+        <div><dt>Stack</dt><dd>Node.js, Express, vanilla JS, Render, Cloudflare</dd></div>
+        <div><dt>Links</dt><dd><a href="https://www.shouldislab.com" target="_blank" rel="noopener">shouldislab.com ↗</a> <a href="https://github.com/Agaspar1321/ShouldISlab" target="_blank" rel="noopener">Source ↗</a></dd></div>
+      </dl>
+    </section>
+
+    <section class="section prose">
+      <h2 class="eyebrow">01 · The problem</h2>
+      <p>
+        Grading a card costs a fee, plus selling fees when you sell it. Most grading calculators
+        only show what you'd make if the card comes back a perfect 10. That number is mostly
+        fiction. On a 1999 Base Charizard, about 0.5% of submissions get a 10 and 58% grade 6
+        or lower.
+      </p>
+      <p>
+        I wanted an honest answer: weigh every grade by how often it actually happens, subtract
+        every fee, and compare the result to what the raw card sells for today.
+      </p>
+    </section>
+
+    <section class="section prose">
+      <h2 class="eyebrow">02 · Architecture</h2>
+      <p>
+        The browser never talks to a data provider directly. An Express server holds the API
+        keys, caches responses, and runs the verdict math, so the page only gets back a finished
+        answer.
+      </p>
+      <figure class="diagram">
+        <svg viewBox="0 0 760 300" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">ShouldISlab architecture</title>
+          <desc id="arch-desc">The browser calls the Express server. The server checks an in-memory cache, then calls CardHedge for sold prices and GemRate for population counts, and returns a verdict.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="d-head" />
+            </marker>
+          </defs>
+
+          <rect class="d-box" x="10" y="115" width="150" height="70" rx="8" />
+          <text class="d-title" x="85" y="146" text-anchor="middle">Browser</text>
+          <text class="d-sub" x="85" y="166" text-anchor="middle">search + verdict UI</text>
+
+          <rect class="d-box d-main" x="245" y="40" width="250" height="220" rx="10" />
+          <text class="d-title" x="370" y="72" text-anchor="middle">Express server</text>
+          <rect class="d-inner" x="265" y="92" width="210" height="44" rx="6" />
+          <text class="d-sub" x="370" y="119" text-anchor="middle">TTL cache · 10m / 6h / 24h</text>
+          <rect class="d-inner" x="265" y="146" width="210" height="44" rx="6" />
+          <text class="d-sub" x="370" y="173" text-anchor="middle">median + Wilson intervals</text>
+          <rect class="d-inner" x="265" y="200" width="210" height="44" rx="6" />
+          <text class="d-sub" x="370" y="227" text-anchor="middle">expected-value verdict</text>
+
+          <rect class="d-box" x="580" y="60" width="170" height="70" rx="8" />
+          <text class="d-title" x="665" y="91" text-anchor="middle">CardHedge API</text>
+          <text class="d-sub" x="665" y="111" text-anchor="middle">sold prices by grade</text>
+
+          <rect class="d-box" x="580" y="170" width="170" height="70" rx="8" />
+          <text class="d-title" x="665" y="201" text-anchor="middle">GemRate API</text>
+          <text class="d-sub" x="665" y="221" text-anchor="middle">population counts</text>
+
+          <line class="d-line" x1="160" y1="140" x2="243" y2="140" marker-end="url(#arrow)" />
+          <line class="d-line" x1="245" y1="160" x2="162" y2="160" marker-end="url(#arrow)" />
+          <text class="d-label" x="202" y="130" text-anchor="middle">GET /api</text>
+          <text class="d-label" x="202" y="180" text-anchor="middle">verdict</text>
+
+          <line class="d-line" x1="495" y1="100" x2="578" y2="95" marker-end="url(#arrow)" />
+          <line class="d-line" x1="495" y1="200" x2="578" y2="205" marker-end="url(#arrow)" />
+          <text class="d-label" x="537" y="86" text-anchor="middle">~10 / 35s</text>
+          <text class="d-label" x="537" y="222" text-anchor="middle">5k / day</text>
+        </svg>
+      </figure>
+    </section>
+
+    <section class="section prose">
+      <h2 class="eyebrow">03 · Technical decisions</h2>
+      <div class="decisions">
+        <article>
+          <h3>Cache around a rate limit</h3>
+          <p>
+            The price API allows about 10 requests every 35 seconds, and one verdict can take 7
+            calls. Without a cache, the second search gets throttled. I added an in-memory TTL
+            cache with lifetimes matched to how fast each kind of data changes: 10 minutes for
+            searches, 6 hours for prices, 24 hours for population. If a 429 still comes back,
+            the server fails fast and the page shows a retry countdown instead of hanging.
+          </p>
+        </article>
+        <article>
+          <h3>Median, not mean</h3>
+          <p>
+            A few huge sales were dragging the average price about 65% high, so I switched to the
+            median. Later I found the new provider's own "comp price" field is a mean, so I
+            ignore it and compute the median myself from the raw sales.
+          </p>
+        </article>
+        <article>
+          <h3>Don't trust small samples</h3>
+          <p>
+            A gem rate measured on 12 graded copies shouldn't look as certain as one measured on
+            100,000. Every rate comes with a 95% Wilson score interval, and prices with too few
+            sales are flagged instead of shown as fact.
+          </p>
+        </article>
+        <article>
+          <h3>Empty, never zero</h3>
+          <p>
+            When a grade has no recent sales, I fill it from the provider's estimate only if that
+            estimate is based on at least two real grades of the same card. Otherwise the page
+            says "no recent sales." Showing $0 would quietly wreck the expected value.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section prose">
+      <h2 class="eyebrow">04 · The challenge: changing the API</h2>
+      <p>
+        The first version pulled prices from CardSight. The verdicts looked plausible, but some
+        felt off, so I stopped adding features and tested the data. I picked 10 real cards,
+        re-read every seller listing title, and checked whether each sale was filed under the
+        right card and grade.
+      </p>
+      <p>
+        It wasn't. CardSight lumped variants of a card together. For Charizard #4, the regular
+        card, the rare Shadowless and 1st Edition printings, and a card from a different set all
+        went into one "PSA 5" price. About three quarters of its records were also asking
+        prices, not completed sales.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Same test, both providers</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">CardSight</th><th scope="col">CardHedge</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Graded sales tested</th><td>4,493</td><td>1,934</td></tr>
+            <tr><th scope="row">Wrong variant in the bucket</th><td>25.1%</td><td>0.3%</td></tr>
+            <tr><th scope="row">Any contamination signal</th><td class="bad">28.4%</td><td class="good">0.4%</td></tr>
+            <tr><th scope="row">Asking prices, not sales</th><td class="bad">73.9%</td><td class="good">0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        That changed real answers. A base Luka Dončić rookie should say "don't grade" and the
+        Silver version should say "grade it." CardSight pooled them, so it gave the wrong answer
+        for both.
+      </p>
+      <p>
+        I moved to CardHedge for prices and added GemRate for population data. The switch had
+        a trap of its own. The one-call "all prices" endpoint looked convenient but returns only
+        the last sale per grade, which broke price ordering 23% of the time. I used the slower
+        per-grade comps endpoint instead. The extra calls are why the cache matters. I also
+        rewrote the server routes behind the same interface, so the frontend barely changed.
+      </p>
+    </section>
+
+    <section class="section prose">
+      <h2 class="eyebrow">05 · What I took from it</h2>
+      <ul class="takeaways">
+        <li><strong>Test the data, not just the code.</strong> The math was right. The input was wrong.</li>
+        <li><strong>Measure before choosing.</strong> I compared providers on the same 10 cards and wrote down every number, so the switch was a decision, not a hunch.</li>
+        <li><strong>Hide providers behind your own API.</strong> Because the browser only knew my routes, swapping the data source was a backend change.</li>
+      </ul>
+      <p class="study-next">
+        <a class="btn" href="https://www.shouldislab.com" target="_blank" rel="noopener">Try ShouldISlab ↗</a>
+        <a class="back" href="index.html#work">← Back to all projects</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-cols">
+      <div>
+        <p class="footer-label">Main</p>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div>
+        <p class="footer-label">Elsewhere</p>
+        <a href="https://github.com/Agaspar1321" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/andrew-gaspar-7aaa92343" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="Andrew_Gaspar_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>Andrew Gaspar, 2026</span>
+    </div>
+  </footer>
+
+</body>
+</html>
