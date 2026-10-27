@@ -901,6 +901,9 @@ body { position: relative; isolation: isolate; }
 }
 
 /* ---------- Case study page ---------- */
+/* one column here; the two-column .hero is for the home page card */
+.study .hero { display: block; padding-bottom: clamp(1rem, 4vh, 3rem); }
+
 .back {
   display: inline-block;
   margin-bottom: 1.5rem;
