@@ -102,6 +102,14 @@ body { position: relative; isolation: isolate; }
 .topbar > * { pointer-events: auto; }
 
 .brand { display: flex; align-items: center; gap: 0.7rem; justify-self: start; }
+.avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+}
 .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
 .brand-name { font-weight: 800; font-style: italic; font-size: 1.3rem; letter-spacing: 0.02em; text-transform: uppercase; }
 .brand-role { font-size: 0.78rem; color: var(--muted); }
@@ -695,7 +703,9 @@ body { position: relative; isolation: isolate; }
 @media (max-width: 36rem) {
   .brand-role { display: none; }
   .eyebrow-extra { display: none; }
-  .pill a { padding: 0.45rem 0.75rem; }
+  .pill a { padding: 0.45rem 0.6rem; }
+  .brand { gap: 0.5rem; }
+  .avatar { width: 36px; height: 36px; }
   .skills { grid-template-columns: 1fr; }
   .card-frame { padding: 5px; border-radius: 22px; }
   .card { border-radius: 17px; }
