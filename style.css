@@ -677,8 +677,7 @@ body { position: relative; isolation: isolate; }
 .study td.bad { color: #f19a9a; }
 .study td.good { color: #9bd8a6; }
 
-.takeaways { display: grid; gap: 0.9rem; max-width: 42rem; padding-left: 1.2rem; color: var(--text); font-size: 1.05rem; }
-.takeaways strong { color: var(--strong); }
+.prose code { font-family: var(--mono); font-size: 0.9em; color: var(--strong); }
 .study-next { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
 .study-next .back { margin-bottom: 0; }
 

@@ -39,8 +39,8 @@
       <h1>ShouldISlab</h1>
       <p class="study-lead">
         A calculator that tells you whether paying to grade a trading card is worth it. Halfway
-        through, I found out my data provider was wrong about a quarter of the time, so I
-        replaced it.
+        through, I found that 28% of my data provider's sales were filed under the wrong card,
+        so I replaced it.
       </p>
       <dl class="study-facts">
         <div><dt>Role</dt><dd>Solo: design, backend, frontend, deploy</dd></div>
@@ -59,8 +59,9 @@
         or lower.
       </p>
       <p>
-        I wanted an honest answer: weigh every grade by how often it actually happens, subtract
-        every fee, and compare the result to what the raw card sells for today.
+        ShouldISlab computes expected value instead. Each grade's sold price is weighted by how
+        often that grade actually happens, fees come off, and the result is compared with what
+        the raw card sells for today.
       </p>
     </section>
 
@@ -149,7 +150,8 @@
           <p>
             When a grade has no recent sales, I fill it from the provider's estimate only if that
             estimate is based on at least two real grades of the same card. Otherwise the page
-            says "no recent sales." Showing $0 would quietly wreck the expected value.
+            says "no recent sales." A $0 there would count as a real price and drag the expected
+            value down.
           </p>
         </article>
       </div>
@@ -158,10 +160,9 @@
     <section class="section prose">
       <h2 class="eyebrow">04 · The challenge: changing the API</h2>
       <p>
-        The first version pulled prices from CardSight. The verdicts looked plausible, but some
-        felt off, so I stopped adding features and tested the data. I picked 10 real cards,
-        re-read every seller listing title, and checked whether each sale was filed under the
-        right card and grade.
+        The first version pulled prices from CardSight. Before building more on it, I tested the
+        data on 10 real cards. I re-read every seller's listing title and checked whether each
+        sale was filed under the right card and grade.
       </p>
       <p>
         It wasn't. CardSight lumped variants of a card together. For Charizard #4, the regular
@@ -192,18 +193,12 @@
         I moved to CardHedge for prices and added GemRate for population data. The switch had
         a trap of its own. The one-call "all prices" endpoint looked convenient but returns only
         the last sale per grade, which broke price ordering 23% of the time. I used the slower
-        per-grade comps endpoint instead. The extra calls are why the cache matters. I also
-        rewrote the server routes behind the same interface, so the frontend barely changed.
+        per-grade comps endpoint instead. The extra calls are why the cache matters.
       </p>
-    </section>
-
-    <section class="section prose">
-      <h2 class="eyebrow">05 · What I took from it</h2>
-      <ul class="takeaways">
-        <li><strong>Test the data, not just the code.</strong> The math was right. The input was wrong.</li>
-        <li><strong>Measure before choosing.</strong> I compared providers on the same 10 cards and wrote down every number, so the switch was a decision, not a hunch.</li>
-        <li><strong>Hide providers behind your own API.</strong> Because the browser only knew my routes, swapping the data source was a backend change.</li>
-      </ul>
+      <p>
+        The browser only calls my own <code>/api</code> routes, so swapping providers was a
+        server change.
+      </p>
       <p class="study-next">
         <a class="btn" href="https://www.shouldislab.com" target="_blank" rel="noopener">Try ShouldISlab ↗</a>
         <a class="back" href="index.html#work">← Back to all projects</a>
