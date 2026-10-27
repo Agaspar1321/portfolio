@@ -15,7 +15,6 @@
 
   <header class="topbar">
     <a class="brand" href="#top">
-      <img class="avatar" src="images/headshot.webp" width="96" height="96" alt="" />
       <span class="brand-text">
         <span class="brand-name">Andrew Gaspar</span>
       <span class="brand-role">CS Student</span>
@@ -54,6 +53,69 @@
         </div>
       </div>
 
+      <!-- graded card. Initials show if images/andrew.webp fails to load -->
+      <div class="hero-card">
+        <aside class="slab" aria-label="About Andrew">
+          <div class="slab-label">
+            <div class="slab-label-l">
+              <p>2026 Portfolio</p>
+              <p>Andrew Gaspar</p>
+              <p>Junior</p>
+              <span class="slab-barcode" aria-hidden="true"></span>
+            </div>
+            <div class="slab-label-r">
+              <p>#13</p>
+              <p>Gem Mt</p>
+              <p>10</p>
+              <p>20260013</p>
+            </div>
+          </div>
+
+          <div class="slab-well">
+            <div class="tcard" role="button" tabindex="0" aria-pressed="false" aria-label="Flip the card to see stats">
+              <div class="tcard-inner">
+
+                <div class="tcard-front">
+                  <div class="tcard-photo">
+                    <span class="tcard-initials" aria-hidden="true">AG</span>
+                    <img src="images/andrew.webp" alt="Andrew Gaspar" width="640" height="800" onerror="this.remove()" />
+                    <span class="tcard-serial" aria-label="Serial numbered one of one">1/1</span>
+                  </div>
+                  <div class="tcard-plate">
+                    <span class="tcard-logo" aria-hidden="true">Jr</span>
+                    <p class="tcard-name">Andrew <b>Gaspar</b></p>
+                    <p class="tcard-team">UW Tacoma</p>
+                    <span class="tcard-pos" aria-hidden="true">CS</span>
+                  </div>
+                </div>
+
+                <div class="tcard-back" aria-hidden="true">
+                  <div class="tcard-back-head">
+                    <span class="tcard-back-num">13</span>
+                    <div>
+                      <p class="tcard-back-name">Andrew Gaspar</p>
+                      <p class="tcard-back-sub">Computer Science &amp; Systems · UW Tacoma</p>
+                    </div>
+                  </div>
+                  <table class="tcard-back-stats">
+                    <thead><tr><th>Year</th><th>Proj</th><th>Clients</th><th>Langs</th><th>Class</th></tr></thead>
+                    <tbody><tr><td>2026</td><td>4</td><td>1</td><td>4</td><td>&rsquo;28</td></tr></tbody>
+                  </table>
+                  <p class="tcard-back-bio">
+                    Builds web apps from the API to the UI. Shipped a production site for a paying
+                    client and three side projects, all still live. Open to internships and
+                    entry-level roles.
+                  </p>
+                  <p class="tcard-back-stack">JavaScript · Node · Express · Java · Python · SQL</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <span class="slab-glare" aria-hidden="true"></span>
+        </aside>
+        <p class="slab-hint" aria-hidden="true">Flip the card for stats <span>↻</span></p>
+      </div>
     </section>
 
     <section id="work" class="section">
